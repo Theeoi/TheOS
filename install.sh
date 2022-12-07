@@ -5,6 +5,7 @@ git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim nvim
 mkdir ~/.config/nvim/lua/user
 ln -s ./dotfiles/astronvim-init.lua ~/.config/nvim/lua/user/init.lua
 ln -s ./dotfiles/zshrc ~/.config/zsh/.zshrc
+ln -s ./dotfiles/gitconfig ~/.config/git/config
 
 # Common dev packages
 sudo pacman -S base-devel
