@@ -31,10 +31,10 @@ This project is in progress but is sporatically worked on during spare time.
 
 ### Roadmap
 To do:
-- [] Improve the user experience of the install script.
-- [] Finish the linuxscoop-antdark install script.
-- [] Add more DE install scripts.
-- [] Implement choosing DE install script from the main install script.
+- [ ] Improve the user experience of the install script.
+- [ ] Finish the linuxscoop-antdark install script.
+- [ ] Add more DE install scripts.
+- [ ] Implement choosing DE install script from the main install script.
 
 Room for improvement:
 - Automatic detection of meeting the requirements.
