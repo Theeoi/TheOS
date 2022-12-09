@@ -1,6 +1,7 @@
 # we need neovim with astronvim
 sudo pacman -S neovim
 git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim nvim
+sudo pacman -S xclip
 
 mkdir ~/.config/nvim/lua/user
 ln -s ./dotfiles/astronvim-init.lua ~/.config/nvim/lua/user/init.lua
