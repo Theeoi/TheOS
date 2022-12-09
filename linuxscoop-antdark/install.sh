@@ -14,11 +14,14 @@ if [[ $pacman_check = *"was not found"* ]]; then
   exit 2
 fi
 
+echo "Running $0..."
+
 cwd=$(pwd)
 script_dir=$(dirname $0)
 script_path="$cwd/$script_dir"
 
 ### DOWNLOAD RESOURCES ###
+echo "Downloading resources..."
 git clone -q https://github.com/EliverLara/Ant.git $script_path/Ant
 svn export -q https://github.com/Fausto-Korpsvart/Kanagawa-GKT-Theme/trunk/icons/Kanagawa $script_path/Kanagawa
 git clone -q https://github.com/alvatip/Nordzy-cursors.git $script_path/Nordzy-cursors
@@ -31,6 +34,8 @@ pacman -Sq --noconfirm qt5-websockets python-docopt python-numpy python-pyaudio 
 pamac install --no-confirm mplasma5-applets-virtual-desktop-bar-git plasma5-applets-window-appmenu plasma5-applets-panon latte-dock
 
 ### INITIAL SETUP ###
+
+echo "Installing $0..."
 
 # Resources
 mkdir -p $HOME/.local/share/plasma
@@ -69,3 +74,5 @@ rm -r $script_path/Nordzy-cursors 2> /dev/null
 resource_dirs=$(find "$script_path/resources/"* -type d)
 rm -r $resource_dirs 2> /dev/null
 
+echo "$0 done!"
+echo "Set up your new KDE DE through the graphical settings manager."
