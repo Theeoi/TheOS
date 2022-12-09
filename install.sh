@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # we need neovim with astronvim
 sudo pacman -S neovim
 git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim nvim
