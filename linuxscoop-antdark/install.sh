@@ -14,46 +14,51 @@ if [[ $pacman_check = *"was not found"* ]]; then
   exit 2
 fi
 
+cwd=$(pwd)
+script_dir=$(dirname $0)
+script_path="$cwd/$script_dir"
+
 ### DOWNLOAD RESOURCES ###
-git clone https://github.com/EliverLara/Ant.git
-svn export https://github.com/Fausto-Korpsvart/Kanagawa-GKT-Theme/trunk/icons/Kanagawa
-git clone https://github.com/alvatip/Nordzy-cursors.git
+git clone -q https://github.com/EliverLara/Ant.git $script_path/Ant
+svn export -q https://github.com/Fausto-Korpsvart/Kanagawa-GKT-Theme/trunk/icons/Kanagawa $script_path/Kanagawa
+git clone -q https://github.com/alvatip/Nordzy-cursors.git $script_path/Nordzy-cursors
 
-unzip "./resources/*.zip" -d ./resources/
+unzip -qq "$script_path/resources/*.zip" -d $script_path/resources/
 
-pamac install lighly-git lightlyshaders-git
+pamac install --no-confirm lighly-git lightlyshaders-git
 
-pacman -S qt5-websockets python-docopt python-numpy python-pyaudio python-cffi python-websockets
-pamac install plasma5-applets-virtual-desktop-bar-git plasma5-applets-window-appmenu plasma5-applets-panon latte-dock
+pacman -Sq --noconfirm qt5-websockets python-docopt python-numpy python-pyaudio python-cffi python-websockets
+pamac install --no-confirm mplasma5-applets-virtual-desktop-bar-git plasma5-applets-window-appmenu plasma5-applets-panon latte-dock
 
 ### INITIAL SETUP ###
 
 # Resources
 mkdir -p $HOME/.local/share/plasma
-mv ./resources/fonts/* $HOME/.local/share/fonts/
-mv ./resources/wallpapers/* $HOME/.local/share/wallpapers/
-mv ./resources/color-scheme/Ant-Dark-Mod-Lightly.colors $HOME/.local/share/color-schemes/
-mv ./resources/plasmoids $HOME/.local/share/plasma/
-mv ./resources/konsole-profile/ant-dark-konsole-zsh.profile $HOME/.local/share/konsole/
-mv ./resources/neofetch-config/config.conf $HOME/.config/neofetch/
+mv $script_path/resources/fonts/* $HOME/.local/share/fonts/
+mv $script_path/resources/wallpapers/* $HOME/.local/share/wallpapers/
+mv $script_path/resources/color-scheme/Ant-Dark-Mod-Lightly.colors $HOME/.local/share/color-schemes/
+mv $script_path/resources/plasmoids $HOME/.local/share/plasma/
+mv $script_path/resources/konsole-profile/ant-dark-konsole-zsh.profile $HOME/.local/share/konsole/
+mv $script_path/resources/neofetch-config/config.conf $HOME/.config/neofetch/
 
 # Ant-Dark
 mkdir -p $HOME/.local/share/aurorae/themes
-mv ./Ant/kde/Dark/aurorae/Ant-Dark $HOME/.local/share/aurorae/themes/
-mv ./Ant/kde/Dark/color-schemes $HOME/.local/share/
-mv ./Ant/kde/Dark/icons $HOME/.local/share/
-mv ./Ant/kde/Dark/konsole/Ant-Dark.colorscheme $HOME/.local/share/konsole/
-mv ./Ant/kde/Dark/plasma/* $HOME/.local/share/plasma/
+mv $script_path/Ant/kde/Dark/aurorae/Ant-Dark $HOME/.local/share/aurorae/themes/
+mv $script_path/Ant/kde/Dark/color-schemes $HOME/.local/share/
+mv $script_path/Ant/kde/Dark/icons $HOME/.local/share/
+mv $script_path/Ant/kde/Dark/konsole/Ant-Dark.colorscheme $HOME/.local/share/konsole/
+mv $script_path/Ant/kde/Dark/plasma/* $HOME/.local/share/plasma/
 
-mv ./Ant/kde/Dark/kvantum $HOME/.config/
+mv $script_path/Ant/kde/Dark/kvantum $HOME/.config/
 
-mv ./Ant/kde/Dark/sddm/Ant-Dark /usr/share/sddm/themes/
+mv $script_path/Ant/kde/Dark/sddm/Ant-Dark /usr/share/sddm/themes/
 
 # Kanagawa
-mv ./Kanagawa $HOME/.local/share/icons/
+mv $script_path/Kanagawa $HOME/.local/share/icons/
 
 # Nordzy-cursors
-chmod +x ./Nordzy-cursors/install.sh
-./Nordzy-cursors/install.sh
+chmod +x $script_path/Nordzy-cursors/install.sh
+source $script_path/Nordzy-cursors/install.sh
+
 
 
