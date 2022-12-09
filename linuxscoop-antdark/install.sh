@@ -5,6 +5,15 @@ if [[ $EUID -ne 0 ]]; then
   exit 2
 fi
 
+req_packages="git svn unzip"
+pacman_check=$(pacman -Q $req_packages 2>&1)
+if [[ $pacman_check = *"was not found"* ]]; then
+  echo "You do not have all required packages to run $0."
+  echo "Please make sure you have these packages installed:"
+  echo $req_packages
+  exit 2
+fi
+
 ### DOWNLOAD RESOURCES ###
 git clone https://github.com/EliverLara/Ant.git
 svn export https://github.com/Fausto-Korpsvart/Kanagawa-GKT-Theme/trunk/icons/Kanagawa
