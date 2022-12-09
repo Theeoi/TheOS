@@ -13,6 +13,10 @@ sudo pacman -S npm
 sudo pacman -S tldr
 sudo pacman -S zip unzip
 sudo pacman -S github-cli
+sudo pacman -S ripgrep lazygit
+
+# LaTeX is needed
+sudo pacman -S texlive-most
 
 # Brave as default browser
 sudo pacman -S brave-browser

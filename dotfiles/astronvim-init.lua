@@ -58,6 +58,8 @@ local config = {
       status_diagnostics_enabled = true, -- enable diagnostics in statusline
       icons_enabled = true, -- disable icons in the UI (disable if no nerd font is available, requires :PackerSync after changing)
       ui_notifications_enabled = true, -- disable notifications when toggling UI elements
+      vimtex_view_general_viewer = "okular",
+      vimtex_view_general_options = "--unique file:@pdf#src:@line@tex",
     },
   },
   -- If you need more control, you can use the function()...end notation
@@ -239,6 +241,7 @@ local config = {
       --     require("lsp_signature").setup()
       --   end,
       -- },
+      {"lervag/vimtex"},
     },
     -- All other entries override the require("<key>").setup({...}) call for default plugins
     ["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`
@@ -307,6 +310,11 @@ local config = {
           -- third key is the key to bring up next level and its displayed
           -- group name in which-key top level menu
           ["b"] = { name = "Buffer" },
+          ["x"] = { name = "VimTeX",
+            ["x"] = { "<Plug>(vimtex-compile)", "Compile .tex" },
+            ["r"] = { "<Plug>(vimtex-reload)", "Clean auxilary files" },
+            ["v"] = { "<Plug>(vimtex-view)", "Goto PDF-location" }
+          },
         },
       },
     },
