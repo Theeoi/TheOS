@@ -60,5 +60,12 @@ mv $script_path/Kanagawa $HOME/.local/share/icons/
 chmod +x $script_path/Nordzy-cursors/install.sh
 source $script_path/Nordzy-cursors/install.sh
 
+### REMOVE CACHED FILES ###
 
+echo "Removing cached files..."
+rm -r $script_path/Ant 2> /dev/null
+rm -r $script_path/Kanagawa 2> /dev/null
+rm -r $script_path/Nordzy-cursors 2> /dev/null
+resource_dirs=$(find "$script_path/resources/"* -type d)
+rm -r $resource_dirs 2> /dev/null
 
