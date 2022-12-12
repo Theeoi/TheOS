@@ -131,6 +131,7 @@ compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export TEXMFVAR="$XDG_CACHE_HOME"/texlive/texmf-var
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
+export PYTHONSTARTUP=$XDG_CACHE_HOME/python/pythonrc
 
 ### Functions ###
 
