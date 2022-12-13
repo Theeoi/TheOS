@@ -19,7 +19,7 @@ script_dir=$(dirname $0)
 script_path="$cwd/$script_dir"
 USERHOME="/home/"$(logname)
 
-pacman -Syy                     # Sync repositories before install
+pacman -Syyu                     # Sync and update repositories
 
 ### SYSTEM ESSENTIALS ###
 
