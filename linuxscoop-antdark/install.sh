@@ -135,6 +135,14 @@ kwriteconfig5 --file ~/.config/ksplashrc \
   --group KSplash \
   --key Theme "None"
 
+# Wallpapers
+kwriteconfig5 --file ~/.config/kscreenlockerrc \
+  --group Greeter \
+  --key WallpaperPlugin "org.kde.slideshow"
+kwriteconfig5 --file ~/.config/kscreenlockerrc \
+  --group Greeter \
+  --key SlidePaths "/home/${USER}/.local/share/wallpapers/"
+
 echo "$0 done!"
 echo "Set up remaining manual KDE settings through the graphical settings manager."
 echo "Reboot computer for changes to take effect."
