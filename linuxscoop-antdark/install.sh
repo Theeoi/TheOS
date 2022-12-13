@@ -77,13 +77,11 @@ rm -r $resource_dirs 2> /dev/null
 ### CONFIGURE KDE SETTINGS ###
 
 echo "Configuring KDE settings..."
+## Appearance
+
 # Global theme
-kwriteconfig5 --file ~/.config/kdeglobals \
-  --group General \
-  --key Name "Ant-Dark"
-kwriteconfig5 --file ~/.config/kdeglobals \
-  --group KDE \
-  --key LookAndFeelPackage "Ant-Dark"
+plasma-apply-lookandfeel -a Ant-Dark
+plasma-apply-desktoptheme Ant-Dark
 
 # Application style
 kwriteconfig5 --file ~/.config/kdeglobals \
@@ -96,9 +94,7 @@ kwriteconfig5 --file ~/.config/kdedefaults/plasmarc \
   --key name "Ant-Dark"
 
 # Colours
-kwriteconfig5 --file ~/.config/kdeglobals \
-  --group General \
-  --key ColorScheme "Ant-Dark-Mod-Lightly"
+plasma-apply-colorscheme Ant-Dark-Mod-Lightly
 
 # Window decorations
 echo "Window decorations must be set manually to 'Ant-Dark'"
@@ -126,9 +122,7 @@ kwriteconfig5 --file ~/.config/kdeglobals \
   --key Theme "Kanagawa"
 
 # Cursors
-kwriteconfig5 --file ~/.config/kcminputrc \
-  --group Mouse \
-  --key cursorTheme "Nordzy-cursors"
+plasma-apply-cursortheme Nordzy-cursors
 
 # Splash screen
 kwriteconfig5 --file ~/.config/ksplashrc \
