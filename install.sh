@@ -35,18 +35,20 @@ pamac install xdg-ninja         # Keep a clean $HOME
 # sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 pamac install oh-my-zsh-git
 cat "export ZDOTDIR=$USERHOME/.config/zsh" > /etc/zsh/zshenv
+mkdir -p $USERHOME/.config/zsh
 ln -s $script_path/dotfiles/zshrc $USERHOME/.config/zsh/.zshrc
 
 ### DEVELOPMENT ###
 
 # Git
 pacman -S github-cli lazygit
+mkdir -p $USERHOME/.config/git
 ln -s $script_path/dotfiles/gitconfig $USERHOME/.config/git/config
 
 # Neovim
 pacman -S neovim
 git clone https://github.com/AstroNvim/AstroNvim $USERHOME/.config/nvim nvim
-mkdir $USERHOME/.config/nvim/lua/user
+mkdir -p $USERHOME/.config/nvim/lua/user
 ln -s $script_path/dotfiles/astronvim-init.lua $USERHOME/.config/nvim/lua/user/init.lua
 
 # Common dev packages
