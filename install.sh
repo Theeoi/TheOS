@@ -17,6 +17,7 @@ fi
 cwd=$(pwd)
 script_dir=$(dirname $0)
 script_path="$cwd/$script_dir"
+USERHOME="/home/$USER"
 
 ### SYSTEM ESSENTIALS ###
 
@@ -30,23 +31,22 @@ pacman -S base-devel            # Basic development
 # zsh terminal with Oh-my-zsh
 sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 pamac install xdg-ninja         # Keep a clean $HOME
-cat "export ZDOTDIR="$HOME"/.config/zsh" > /etc/zsh/zshenv
-ln -s $script_path/dotfiles/zshrc ~/.config/zsh/.zshrc
+cat "export ZDOTDIR=$USERHOME/.config/zsh" > /etc/zsh/zshenv
+ln -s $script_path/dotfiles/zshrc $USERHOME/.config/zsh/.zshrc
 
 ### DEVELOPMENT ###
 
 # Git
 pacman -S github-cli lazygit
-ln -s ./dotfiles/gitconfig ~/.config/git/config
+ln -s $script_path/dotfiles/gitconfig $USERHOME/.config/git/config
 
 # Neovim
 pacman -S neovim
-git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim nvim
-mkdir ~/.config/nvim/lua/user
-ln -s $script_path/dotfiles/astronvim-init.lua ~/.config/nvim/lua/user/init.lua
+git clone https://github.com/AstroNvim/AstroNvim $USERHOME/.config/nvim nvim
+mkdir $USERHOME/.config/nvim/lua/user
+ln -s $script_path/dotfiles/astronvim-init.lua $USERHOME/.config/nvim/lua/user/init.lua
 
 # Common dev packages
-pacman -S base-devel
 pacman -S npm
 pacman -S ripgrep
 
