@@ -137,3 +137,4 @@ kwriteconfig5 --file ~/.config/ksplashrc \
 
 echo "$0 done!"
 echo "Set up remaining manual KDE settings through the graphical settings manager."
+echo "Reboot computer for changes to take effect."
