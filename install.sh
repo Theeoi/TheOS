@@ -19,6 +19,8 @@ script_dir=$(dirname $0)
 script_path="$cwd/$script_dir"
 USERHOME="/home/"$(logname)
 
+pacman -Syy                     # Sync repositories before install
+
 ### SYSTEM ESSENTIALS ###
 
 pacman -S noto-fonts-emoji      # Enable emojis
