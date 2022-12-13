@@ -17,7 +17,7 @@ fi
 cwd=$(pwd)
 script_dir=$(dirname $0)
 script_path="$cwd/$script_dir"
-USERHOME="/home/$USER"
+USERHOME="/home/"$(logname)
 
 ### SYSTEM ESSENTIALS ###
 
