@@ -25,6 +25,7 @@ pacman -S xclip                 # Improved copy-paste
 pacman -S tldr                  # Easy man pages
 pacman -S zip unzip             # zip extraction
 pacman -S timeshift             # System backup
+pacman -S base-devel            # Basic development
 
 # zsh terminal with Oh-my-zsh
 sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
