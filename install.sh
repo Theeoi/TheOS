@@ -29,11 +29,11 @@ pacman -S tldr                  # Easy man pages
 pacman -S zip unzip             # zip extraction
 pacman -S timeshift             # System backup
 pacman -S base-devel            # Basic development
+pamac install xdg-ninja         # Keep a clean $HOME
 
 # zsh terminal with Oh-my-zsh
 # sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 pamac install oh-my-zsh-git
-pamac install xdg-ninja         # Keep a clean $HOME
 cat "export ZDOTDIR=$USERHOME/.config/zsh" > /etc/zsh/zshenv
 ln -s $script_path/dotfiles/zshrc $USERHOME/.config/zsh/.zshrc
 
@@ -52,6 +52,7 @@ ln -s $script_path/dotfiles/astronvim-init.lua $USERHOME/.config/nvim/lua/user/i
 # Common dev packages
 pacman -S npm
 pacman -S ripgrep
+pacman -S svn
 
 ### PROGRAMS ###
 
