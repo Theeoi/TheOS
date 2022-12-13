@@ -31,7 +31,8 @@ pacman -S timeshift             # System backup
 pacman -S base-devel            # Basic development
 
 # zsh terminal with Oh-my-zsh
-sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+# sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+pamac install oh-my-zsh-git
 pamac install xdg-ninja         # Keep a clean $HOME
 cat "export ZDOTDIR=$USERHOME/.config/zsh" > /etc/zsh/zshenv
 ln -s $script_path/dotfiles/zshrc $USERHOME/.config/zsh/.zshrc
