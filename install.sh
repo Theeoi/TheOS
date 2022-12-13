@@ -70,7 +70,7 @@ MENU_OPT=( "$EVERYTHING" "$SKIP_DE" )
 echo "Select a DE package to install:"
 AVAILABLE_DE=( "linuxscoop-antdark" )
 
-select de in "${AVAILABLE_DE[@]}" "${MENU_OPT[@]}";
+select choice in "${AVAILABLE_DE[@]}" "${MENU_OPT[@]}";
 do
   case $choice in
     linuxscoop-antdark)
