@@ -64,7 +64,8 @@ pacman -S gimp inkscape         # Graphical work
 # Nord-suite
 pamac install nordpass-bin
 pamac install nordvpn-bin
-usermod -aG nordvpn $USER
+systemctl enable --now nordvpnd
+gpasswd -a $(logname) nordvpnd
 
 ### DE INSTALLER ###
 
