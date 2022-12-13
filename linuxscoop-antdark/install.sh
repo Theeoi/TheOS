@@ -5,7 +5,7 @@ if [[ $EUID -ne 0 ]]; then
   exit 2
 fi
 
-req_packages="git svn unzip"
+req_packages="git svn unzip kwriteconfig5"
 pacman_check=$(pacman -Q $req_packages 2>&1)
 if [[ $pacman_check = *"was not found"* ]]; then
   echo "You do not have all required packages to run $0."
@@ -74,5 +74,66 @@ rm -r $script_path/Nordzy-cursors 2> /dev/null
 resource_dirs=$(find "$script_path/resources/"* -type d)
 rm -r $resource_dirs 2> /dev/null
 
+### CONFIGURE KDE SETTINGS ###
+
+echo "Configuring KDE settings..."
+# Global theme
+kwriteconfig5 --file ~/.config/kdeglobals \
+  --group General \
+  --key Name "Ant-Dark"
+kwriteconfig5 --file ~/.config/kdeglobals \
+  --group KDE \
+  --key LookAndFeelPackage "Ant-Dark"
+
+# Application style
+kwriteconfig5 --file ~/.config/kdeglobals \
+  --group KDE \
+  --key widgetStyle "Lightly"
+
+# Plasma style
+kwriteconfig5 --file ~/.config/kdedefaults/plasmarc \
+  --group Theme \
+  --key name "Ant-Dark"
+
+# Colours
+kwriteconfig5 --file ~/.config/kdeglobals \
+  --group General \
+  --key ColorScheme "Ant-Dark-Mod-Lightly"
+
+# Window decorations
+echo "Window decorations must be set manually to 'Ant-Dark'"
+
+# Fonts
+kwriteconfig5 --file ~/.config/kdeglobals \
+  --group General \
+  --key font "Roboto,10,-1,5,50,0,0,0,0,0"
+kwriteconfig5 --file ~/.config/kdeglobals \
+  --group General \
+  --key fixed "FiraCode Nerd Font,10,-1,5,50,0,0,0,0,0"
+kwriteconfig5 --file ~/.config/kdeglobals \
+  --group General \
+  --key smallestReadableFont "Roboto,8,-1,5,50,0,0,0,0,0"
+kwriteconfig5 --file ~/.config/kdeglobals \
+  --group General \
+  --key toolBarFont "Roboto,10,-1,5,50,0,0,0,0,0"
+kwriteconfig5 --file ~/.config/kdeglobals \
+  --group General \
+  --key menuFont "Roboto,10,-1,5,50,0,0,0,0,0"
+
+# Icons
+kwriteconfig5 --file ~/.config/kdeglobals \
+  --group Icons \
+  --key Theme "Kanagawa"
+
+# Cursors
+kwriteconfig5 --file ~/.config/kcminputrc \
+  --group Mouse \
+  --key cursorTheme "Nordzy-cursors"
+
+# Splash screen
+kwriteconfig5 --file ~/.config/ksplashrc \
+  --group KSplash \
+  --key Theme "None"
+
 echo "$0 done!"
-echo "Set up your new KDE DE through the graphical settings manager."
+echo "Set up remaining manual KDE settings through the graphical settings manager."
