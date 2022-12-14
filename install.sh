@@ -35,7 +35,9 @@ pamac install xdg-ninja         # Keep a clean $HOME
 echo "export ZDOTDIR=$USERHOME/.config/zsh" > /etc/zsh/zshenv
 mkdir -p $USERHOME/.config/zsh
 ln -s $script_path/dotfiles/zshrc $USERHOME/.config/zsh/.zshrc
+rm $USERHOME/.zshrc
 sudo -u $(logname) sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+mv $USERHOME/.oh-my-zsh $USERHOME/.config/oh-my-zsh
 
 ### DEVELOPMENT ###
 
