@@ -5,7 +5,7 @@ if [[ $EUID -ne 0 ]]; then
   exit 2
 fi
 
-req_packages="git sh wget pamac"
+req_packages="git sh wget pamac tee"
 pacman_check=$(pacman -Q $req_packages 2>&1)
 if [[ $pacman_check = *"was not found"* ]]; then
   echo "You do not have all required packages to run $0."
@@ -32,12 +32,13 @@ pacman -S base-devel            # Basic development
 pamac install xdg-ninja         # Keep a clean $HOME
 
 # zsh terminal with Oh-my-zsh
-echo "export ZDOTDIR=$USERHOME/.config/zsh" > /etc/zsh/zshenv
+echo "export ZDOTDIR=$USERHOME/.config/zsh" | sudo tee /etc/zsh/zshenv
 sudo -u $(logname) mkdir -p $USERHOME/.config/zsh
 sudo -u $(logname) ln -s $script_path/dotfiles/zshrc $USERHOME/.config/zsh/.zshrc
 rm $USERHOME/.zshrc
 sudo -u $(logname) sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 sudo -u $(logname) mv $USERHOME/.oh-my-zsh $USERHOME/.config/oh-my-zsh
+source $USERHOME/.config/zsh/.zshrc
 
 ### DEVELOPMENT ###
 
@@ -45,6 +46,7 @@ sudo -u $(logname) mv $USERHOME/.oh-my-zsh $USERHOME/.config/oh-my-zsh
 pacman -S github-cli lazygit
 sudo -u $(logname) mkdir -p $USERHOME/.config/git
 sudo -u $(logname) ln -s $script_path/dotfiles/gitconfig $USERHOME/.config/git/config
+rm $USERHOME/.gitconfig
 
 # Neovim
 pacman -S neovim
