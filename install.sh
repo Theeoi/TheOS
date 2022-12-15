@@ -36,7 +36,6 @@ echo "export ZDOTDIR=$USERHOME/.config/zsh" | sudo tee /etc/zsh/zshenv
 sudo -u $(logname) mkdir -p $USERHOME/.config/zsh
 sudo -u $(logname) ln -s $script_path/dotfiles/zshrc $USERHOME/.config/zsh/.zshrc
 sudo -u $(logname) ZSH=$USERHOME/.config/oh-my-zsh sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)" "" --unattended
-# sudo -u $(logname) mv $USERHOME/.oh-my-zsh $USERHOME/.config/oh-my-zsh
 rm $USERHOME/.zshrc
 source $USERHOME/.config/zsh/.zshrc
 
@@ -50,7 +49,7 @@ rm $USERHOME/.gitconfig
 
 # Neovim
 pacman -S neovim
-git clone https://github.com/AstroNvim/AstroNvim $USERHOME/.config/nvim
+sudo -u $(logname) git clone https://github.com/AstroNvim/AstroNvim $USERHOME/.config/nvim
 sudo -u $(logname) mkdir -p $USERHOME/.config/nvim/lua/user
 sudo -u $(logname) ln -s $script_path/dotfiles/astronvim-init.lua $USERHOME/.config/nvim/lua/user/init.lua
 
@@ -96,6 +95,7 @@ do
       ;;
     'Skip DE installation')
       echo "Skipping DE installation."
+      echo "Reboot your machine for changes to take effect."
       break
       ;;
     *)
