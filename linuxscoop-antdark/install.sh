@@ -88,12 +88,12 @@ plasma-apply-lookandfeel -a Ant-Dark
 plasma-apply-desktoptheme Ant-Dark
 
 # Application style
-kwriteconfig5 --file ~/.config/kdeglobals \
+kwriteconfig5 --file $USERHOME/.config/kdeglobals \
   --group KDE \
   --key widgetStyle "Lightly"
 
 # Plasma style
-kwriteconfig5 --file ~/.config/kdedefaults/plasmarc \
+kwriteconfig5 --file $USERHOME/.config/kdedefaults/plasmarc \
   --group Theme \
   --key name "Ant-Dark"
 
@@ -104,24 +104,24 @@ plasma-apply-colorscheme Ant-Dark-Mod-Lightly
 echo "Window decorations must be set manually to 'Ant-Dark'"
 
 # Fonts
-kwriteconfig5 --file ~/.config/kdeglobals \
+kwriteconfig5 --file $USERHOME/.config/kdeglobals \
   --group General \
   --key font "Roboto,10,-1,5,50,0,0,0,0,0"
-kwriteconfig5 --file ~/.config/kdeglobals \
+kwriteconfig5 --file $USERHOME/.config/kdeglobals \
   --group General \
   --key fixed "FiraCode Nerd Font,10,-1,5,50,0,0,0,0,0"
-kwriteconfig5 --file ~/.config/kdeglobals \
+kwriteconfig5 --file $USERHOME/.config/kdeglobals \
   --group General \
   --key smallestReadableFont "Roboto,8,-1,5,50,0,0,0,0,0"
-kwriteconfig5 --file ~/.config/kdeglobals \
+kwriteconfig5 --file $USERHOME/.config/kdeglobals \
   --group General \
   --key toolBarFont "Roboto,10,-1,5,50,0,0,0,0,0"
-kwriteconfig5 --file ~/.config/kdeglobals \
+kwriteconfig5 --file $USERHOME/.config/kdeglobals \
   --group General \
   --key menuFont "Roboto,10,-1,5,50,0,0,0,0,0"
 
 # Icons
-kwriteconfig5 --file ~/.config/kdeglobals \
+kwriteconfig5 --file $USERHOME/.config/kdeglobals \
   --group Icons \
   --key Theme "Kanagawa"
 
@@ -129,15 +129,15 @@ kwriteconfig5 --file ~/.config/kdeglobals \
 plasma-apply-cursortheme Nordzy-cursors
 
 # Splash screen
-kwriteconfig5 --file ~/.config/ksplashrc \
+kwriteconfig5 --file $USERHOME/.config/ksplashrc \
   --group KSplash \
   --key Theme "None"
 
 # Wallpapers
-kwriteconfig5 --file ~/.config/kscreenlockerrc \
+kwriteconfig5 --file $USERHOME/.config/kscreenlockerrc \
   --group Greeter \
   --key WallpaperPlugin "org.kde.slideshow"
-kwriteconfig5 --file ~/.config/kscreenlockerrc \
+kwriteconfig5 --file $USERHOME/.config/kscreenlockerrc \
   --group Greeter \
   --key SlidePaths "$USERHOME/.local/share/wallpapers/"
 
