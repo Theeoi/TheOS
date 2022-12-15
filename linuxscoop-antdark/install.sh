@@ -68,6 +68,8 @@ mv $script_path/Kanagawa $USERHOME/.local/share/icons/
 # Nordzy-cursors
 chmod +x $script_path/Nordzy-cursors/install.sh
 sudo -u $(logname) source $script_path/Nordzy-cursors/install.sh
+sudo -u $(logname) mv $USERHOME/.icons/* $USERHOME/.local/share/icons/
+rm -r $USERHOME/.icons
 
 ### REMOVE CACHED FILES ###
 
