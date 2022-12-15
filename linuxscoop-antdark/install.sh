@@ -29,10 +29,10 @@ sudo -u $(logname) git clone -q https://github.com/alvatip/Nordzy-cursors.git $s
 
 sudo -u $(logname) unzip -qq "$script_path/resources/*.zip" -d $script_path/resources/
 
-pamac install --no-confirm lighly-git lightlyshaders-git
+pamac install lightly-git lightlyshaders-git
 
-pacman -Sq --noconfirm qt5-websockets python-docopt python-numpy python-pyaudio python-cffi python-websockets
-pamac install --no-confirm mplasma5-applets-virtual-desktop-bar-git plasma5-applets-window-appmenu plasma5-applets-panon latte-dock
+pacman -S qt5-websockets python-docopt python-numpy python-pyaudio python-cffi python-websockets
+pamac install plasma5-applets-virtual-desktop-bar-git plasma5-applets-window-appmenu plasma5-applets-panon latte-dock
 
 ### INITIAL SETUP ###
 
