@@ -19,6 +19,7 @@ echo "Running $0..."
 cwd=$(pwd)
 script_dir=$(dirname $0)
 script_path="$cwd/$script_dir"
+USERHOME="/home/"$(logname)
 
 ### DOWNLOAD RESOURCES ###
 echo "Downloading resources..."
@@ -38,28 +39,28 @@ pamac install --no-confirm mplasma5-applets-virtual-desktop-bar-git plasma5-appl
 echo "Installing $0..."
 
 # Resources
-mv $script_path/resources/fonts/* $HOME/.local/share/fonts/
-mv $script_path/resources/wallpapers/* $HOME/.local/share/wallpapers/
-mv $script_path/resources/color-scheme/Ant-Dark-Mod-Lightly.colors $HOME/.local/share/color-schemes/
-mv $script_path/resources/plasmoids $HOME/.local/share/plasma/
-mv $script_path/resources/konsole-profile/ant-dark-konsole-zsh.profile $HOME/.local/share/konsole/
-mv $script_path/resources/neofetch-config/config.conf $HOME/.config/neofetch/
 sudo -u $(logname) mkdir -p $USERHOME/.local/share/plasma
+mv $script_path/resources/fonts/* $USERHOME/.local/share/fonts/
+mv $script_path/resources/wallpapers/* $USERHOME/.local/share/wallpapers/
+mv $script_path/resources/color-scheme/Ant-Dark-Mod-Lightly.colors $USERHOME/.local/share/color-schemes/
+mv $script_path/resources/plasmoids $USERHOME/.local/share/plasma/
+mv $script_path/resources/konsole-profile/ant-dark-konsole-zsh.profile $USERHOME/.local/share/konsole/
+mv $script_path/resources/neofetch-config/config.conf $USERHOME/.config/neofetch/
 
 # Ant-Dark
-mv $script_path/Ant/kde/Dark/aurorae/Ant-Dark $HOME/.local/share/aurorae/themes/
-mv $script_path/Ant/kde/Dark/color-schemes $HOME/.local/share/
-mv $script_path/Ant/kde/Dark/icons $HOME/.local/share/
-mv $script_path/Ant/kde/Dark/konsole/Ant-Dark.colorscheme $HOME/.local/share/konsole/
-mv $script_path/Ant/kde/Dark/plasma/* $HOME/.local/share/plasma/
 sudo -u $(logname) mkdir -p $USERHOME/.local/share/aurorae/themes
+mv $script_path/Ant/kde/Dark/aurorae/Ant-Dark $USERHOME/.local/share/aurorae/themes/
+mv $script_path/Ant/kde/Dark/color-schemes $USERHOME/.local/share/
+mv $script_path/Ant/kde/Dark/icons $USERHOME/.local/share/
+mv $script_path/Ant/kde/Dark/konsole/Ant-Dark.colorscheme $USERHOME/.local/share/konsole/
+mv $script_path/Ant/kde/Dark/plasma/* $USERHOME/.local/share/plasma/
 
-mv $script_path/Ant/kde/Dark/kvantum $HOME/.config/
+mv $script_path/Ant/kde/Dark/kvantum $USERHOME/.config/
 
 mv $script_path/Ant/kde/Dark/sddm/Ant-Dark /usr/share/sddm/themes/
 
 # Kanagawa
-mv $script_path/Kanagawa $HOME/.local/share/icons/
+mv $script_path/Kanagawa $USERHOME/.local/share/icons/
 
 # Nordzy-cursors
 chmod +x $script_path/Nordzy-cursors/install.sh
@@ -135,7 +136,7 @@ kwriteconfig5 --file ~/.config/kscreenlockerrc \
   --key WallpaperPlugin "org.kde.slideshow"
 kwriteconfig5 --file ~/.config/kscreenlockerrc \
   --group Greeter \
-  --key SlidePaths "$HOME/.local/share/wallpapers/"
+  --key SlidePaths "$USERHOME/.local/share/wallpapers/"
 
 echo "$0 done!"
 echo "Set up remaining manual KDE settings through the graphical settings manager."
