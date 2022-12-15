@@ -5,7 +5,7 @@ if [[ $EUID -ne 0 ]]; then
   exit 2
 fi
 
-req_packages="git sh wget pamac tee"
+req_packages="git sh wget pamac"
 pacman_check=$(pacman -Q $req_packages 2>&1)
 if [[ $pacman_check = *"was not found"* ]]; then
   echo "You do not have all required packages to run $0."
