@@ -20,6 +20,7 @@ script_path="$cwd/$script_dir"
 USERHOME="/home/"$(logname)
 
 pacman -Syyu                     # Sync and update repositories
+sed -Ei '/EnableAUR/s/^#//' /etc/pamac.conf # EnableAUR in pamac
 
 ### SYSTEM ESSENTIALS ###
 
