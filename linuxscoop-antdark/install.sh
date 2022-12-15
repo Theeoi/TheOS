@@ -14,15 +14,15 @@ if [[ $pacman_check = *"was not found"* ]]; then
   exit 2
 fi
 
-echo "Running $0..."
-
 cwd=$(pwd)
 script_dir=$(dirname $0)
 script_path="$cwd/$script_dir"
 USERHOME="/home/"$(logname)
 
+echo "Running $0 in ${script_dir}..."
+
 ### DOWNLOAD RESOURCES ###
-echo "Downloading resources..."
+echo "Downloading resources to ${script_path}..."
 sudo -u $(logname) git clone -q https://github.com/EliverLara/Ant.git $script_path/Ant
 sudo -u $(logname) svn export -q https://github.com/Fausto-Korpsvart/Kanagawa-GKT-Theme/trunk/icons/Kanagawa $script_path/Kanagawa
 sudo -u $(logname) git clone -q https://github.com/alvatip/Nordzy-cursors.git $script_path/Nordzy-cursors
