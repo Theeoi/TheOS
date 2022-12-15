@@ -22,11 +22,11 @@ script_path="$cwd/$script_dir"
 
 ### DOWNLOAD RESOURCES ###
 echo "Downloading resources..."
-git clone -q https://github.com/EliverLara/Ant.git $script_path/Ant
-svn export -q https://github.com/Fausto-Korpsvart/Kanagawa-GKT-Theme/trunk/icons/Kanagawa $script_path/Kanagawa
-git clone -q https://github.com/alvatip/Nordzy-cursors.git $script_path/Nordzy-cursors
+sudo -u $(logname) git clone -q https://github.com/EliverLara/Ant.git $script_path/Ant
+sudo -u $(logname) svn export -q https://github.com/Fausto-Korpsvart/Kanagawa-GKT-Theme/trunk/icons/Kanagawa $script_path/Kanagawa
+sudo -u $(logname) git clone -q https://github.com/alvatip/Nordzy-cursors.git $script_path/Nordzy-cursors
 
-unzip -qq "$script_path/resources/*.zip" -d $script_path/resources/
+sudo -u $(logname) unzip -qq "$script_path/resources/*.zip" -d $script_path/resources/
 
 pamac install --no-confirm lighly-git lightlyshaders-git
 
@@ -38,21 +38,21 @@ pamac install --no-confirm mplasma5-applets-virtual-desktop-bar-git plasma5-appl
 echo "Installing $0..."
 
 # Resources
-mkdir -p $HOME/.local/share/plasma
 mv $script_path/resources/fonts/* $HOME/.local/share/fonts/
 mv $script_path/resources/wallpapers/* $HOME/.local/share/wallpapers/
 mv $script_path/resources/color-scheme/Ant-Dark-Mod-Lightly.colors $HOME/.local/share/color-schemes/
 mv $script_path/resources/plasmoids $HOME/.local/share/plasma/
 mv $script_path/resources/konsole-profile/ant-dark-konsole-zsh.profile $HOME/.local/share/konsole/
 mv $script_path/resources/neofetch-config/config.conf $HOME/.config/neofetch/
+sudo -u $(logname) mkdir -p $USERHOME/.local/share/plasma
 
 # Ant-Dark
-mkdir -p $HOME/.local/share/aurorae/themes
 mv $script_path/Ant/kde/Dark/aurorae/Ant-Dark $HOME/.local/share/aurorae/themes/
 mv $script_path/Ant/kde/Dark/color-schemes $HOME/.local/share/
 mv $script_path/Ant/kde/Dark/icons $HOME/.local/share/
 mv $script_path/Ant/kde/Dark/konsole/Ant-Dark.colorscheme $HOME/.local/share/konsole/
 mv $script_path/Ant/kde/Dark/plasma/* $HOME/.local/share/plasma/
+sudo -u $(logname) mkdir -p $USERHOME/.local/share/aurorae/themes
 
 mv $script_path/Ant/kde/Dark/kvantum $HOME/.config/
 
@@ -63,7 +63,7 @@ mv $script_path/Kanagawa $HOME/.local/share/icons/
 
 # Nordzy-cursors
 chmod +x $script_path/Nordzy-cursors/install.sh
-source $script_path/Nordzy-cursors/install.sh
+sudo -u $(logname) source $script_path/Nordzy-cursors/install.sh
 
 ### REMOVE CACHED FILES ###
 
