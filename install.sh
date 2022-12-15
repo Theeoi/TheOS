@@ -71,6 +71,10 @@ pamac install nordvpn-bin
 systemctl enable --now nordvpnd
 gpasswd -a $(logname) nordvpnd
 
+### AUTOSTART ###
+sudo -u $(logname) cp -a /usr/share/applications/org.kde.yakuake.desktop $USERHOME/.config/autostart/
+sudo -u $(logname) cp -a /usr/share/applications/nordpass.desktop $USERHOME/.config/autostart/
+
 ### DE INSTALLER ###
 
 EVERYTHING=$'All packages (!)'
