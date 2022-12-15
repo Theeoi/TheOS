@@ -33,24 +33,24 @@ pamac install xdg-ninja         # Keep a clean $HOME
 
 # zsh terminal with Oh-my-zsh
 echo "export ZDOTDIR=$USERHOME/.config/zsh" > /etc/zsh/zshenv
-mkdir -p $USERHOME/.config/zsh
-ln -s $script_path/dotfiles/zshrc $USERHOME/.config/zsh/.zshrc
+sudo -u $(logname) mkdir -p $USERHOME/.config/zsh
+sudo -u $(logname) ln -s $script_path/dotfiles/zshrc $USERHOME/.config/zsh/.zshrc
 rm $USERHOME/.zshrc
 sudo -u $(logname) sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-mv $USERHOME/.oh-my-zsh $USERHOME/.config/oh-my-zsh
+sudo -u $(logname) mv $USERHOME/.oh-my-zsh $USERHOME/.config/oh-my-zsh
 
 ### DEVELOPMENT ###
 
 # Git
 pacman -S github-cli lazygit
-mkdir -p $USERHOME/.config/git
-ln -s $script_path/dotfiles/gitconfig $USERHOME/.config/git/config
+sudo -u $(logname) mkdir -p $USERHOME/.config/git
+sudo -u $(logname) ln -s $script_path/dotfiles/gitconfig $USERHOME/.config/git/config
 
 # Neovim
 pacman -S neovim
 git clone https://github.com/AstroNvim/AstroNvim $USERHOME/.config/nvim
-mkdir -p $USERHOME/.config/nvim/lua/user
-ln -s $script_path/dotfiles/astronvim-init.lua $USERHOME/.config/nvim/lua/user/init.lua
+sudo -u $(logname) mkdir -p $USERHOME/.config/nvim/lua/user
+sudo -u $(logname) ln -s $script_path/dotfiles/astronvim-init.lua $USERHOME/.config/nvim/lua/user/init.lua
 
 # Common dev packages
 pacman -S npm
