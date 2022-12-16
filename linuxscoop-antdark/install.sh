@@ -162,6 +162,10 @@ kwriteconfig5 --file $USERHOME/.config/kscreenlockerrc \
   --group Greeter \
   --key SlidePaths "$USERHOME/.local/share/wallpapers/"
 
+## Latte-dock Panel
+sudo -u $(logname) latte-dock --import-layout $script_path/resources/cupmond-plasma-color.layout.latte
+sudo -u $(logname) latte-dock --enable-autostart
+
 echo "$0 done!"
 echo "Set up remaining manual KDE settings through the graphical settings manager."
 echo "Reboot computer for changes to take effect."
