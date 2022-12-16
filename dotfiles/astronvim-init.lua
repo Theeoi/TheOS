@@ -48,6 +48,10 @@ local config = {
       signcolumn = "auto", -- sets vim.opt.signcolumn to auto
       textwidth = 79, -- sets vim.opt.textwidth
       wrap = true, -- sets vim.opt.wrap
+      linebreak = true, -- wrap at words and not characters
+      foldenable = false, -- do not fold by default
+      foldexpr = "nvim_treesitter#foldexpr()", -- treesitter-based folding
+      foldmethod = "expr",
     },
     g = {
       mapleader = " ", -- sets vim.g.mapleader
