@@ -68,7 +68,7 @@ mv $script_path/Kanagawa $USERHOME/.local/share/icons/
 # Nordzy-cursors
 chmod +x $script_path/Nordzy-cursors/install.sh
 sudo -u $(logname) source $script_path/Nordzy-cursors/install.sh
-sudo -u $(logname) mv $USERHOME/.icons/* $USERHOME/.local/share/icons/
+mv $USERHOME/.icons/* $USERHOME/.local/share/icons/
 rm -r $USERHOME/.icons
 
 ### REMOVE CACHED FILES ###
@@ -86,8 +86,20 @@ echo "Configuring KDE settings..."
 ## Appearance
 
 # Global theme
-plasma-apply-lookandfeel -a Ant-Dark
-plasma-apply-desktoptheme Ant-Dark
+kwriteconfig5 --file $USERHOME/.config/kdeglobals \
+  --group General \
+  --key name "Ant-Dark"
+kwriteconfig5 --file $USERHOME/.config/kdeglobals \
+  --group KDE \
+  --key LookAndFeelPackage "Ant-Dark"
+kwriteconfig5 --file $USERHOME/.config/gtk-2.0/gtkrc \
+  --key gtk-theme-name "Ant-Dark"
+kwriteconfig5 --file $USERHOME/.config/gtk-3.0/settings.ini \
+  --group Settings \
+  --key gtk-theme-name "Ant-Dark"
+kwriteconfig5 --file $USERHOME/.config/gtk-4.0/settings.ini \
+  --group Settings \
+  --key gtk-theme-name "Ant-Dark"
 
 # Application style
 kwriteconfig5 --file $USERHOME/.config/kdeglobals \
@@ -100,7 +112,9 @@ kwriteconfig5 --file $USERHOME/.config/kdedefaults/plasmarc \
   --key name "Ant-Dark"
 
 # Colours
-plasma-apply-colorscheme Ant-Dark-Mod-Lightly
+kwriteconfig5 --file $USERHOME/.config/kdeglobals \
+  --group General \
+  --key name "Ant-Dark-Mod-Lightly"
 
 # Window decorations
 echo "Window decorations must be set manually to 'Ant-Dark'"
@@ -121,6 +135,9 @@ kwriteconfig5 --file $USERHOME/.config/kdeglobals \
 kwriteconfig5 --file $USERHOME/.config/kdeglobals \
   --group General \
   --key menuFont "Roboto,10,-1,5,50,0,0,0,0,0"
+kwriteconfig5 --file $USERHOME/.config/kdeglobals \
+  --group WM \
+  --key activeFont "Roboto,10,-1,5,50,0,0,0,0,0"
 
 # Icons
 kwriteconfig5 --file $USERHOME/.config/kdeglobals \
@@ -128,7 +145,9 @@ kwriteconfig5 --file $USERHOME/.config/kdeglobals \
   --key Theme "Kanagawa"
 
 # Cursors
-plasma-apply-cursortheme Nordzy-cursors
+kwriteconfig5 --file $USERHOME/.config/kcminputrc \
+  --group Mouse \
+  --key cursorTheme "Nordzy-cursors"
 
 # Splash screen
 kwriteconfig5 --file $USERHOME/.config/ksplashrc \
