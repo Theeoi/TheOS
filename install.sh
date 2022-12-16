@@ -70,7 +70,7 @@ pacman -S gimp inkscape         # Graphical work
 pamac install nordpass-bin
 pamac install nordvpn-bin
 systemctl enable --now nordvpnd
-gpasswd -a $(logname) nordvpnd
+gpasswd -a $(logname) nordvpn
 
 ### AUTOSTART ###
 sudo -u $(logname) cp -a /usr/share/applications/org.kde.yakuake.desktop $USERHOME/.config/autostart/
