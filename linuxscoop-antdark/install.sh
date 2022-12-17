@@ -14,12 +14,10 @@ if [[ $pacman_check = *"was not found"* ]]; then
   exit 2
 fi
 
-cwd=$(pwd)
-script_dir=$(dirname $0)
-script_path="$cwd/$script_dir"
+script_path=$(realpath $(dirname $0))
 USERHOME="/home/"$(logname)
 
-echo "Running $0 in ${script_dir}..."
+echo "Running $0..."
 
 ### DOWNLOAD RESOURCES ###
 echo "Downloading resources to ${script_path}..."
@@ -36,7 +34,7 @@ pamac install plasma5-applets-virtual-desktop-bar-git plasma5-applets-window-app
 
 ### INITIAL SETUP ###
 
-echo "Installing $0..."
+echo "Installing $(dirname $0)..."
 
 # Ant-Dark
 sudo -u $(logname) mkdir -p $USERHOME/.local/share/aurorae/themes
@@ -167,5 +165,5 @@ sudo -u $(logname) latte-dock --import-layout $script_path/resources/cupmond-pla
 sudo -u $(logname) latte-dock --enable-autostart
 
 echo "$0 done!"
-echo "Set up remaining manual KDE settings through the graphical settings manager."
 echo "Reboot computer for changes to take effect."
+echo "Then set up remaining KDE settings through the graphical settings manager."

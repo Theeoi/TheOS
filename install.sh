@@ -14,9 +14,7 @@ if [[ $pacman_check = *"was not found"* ]]; then
   exit 2
 fi
 
-cwd=$(pwd)
-script_dir=$(dirname $0)
-script_path="$cwd/$script_dir"
+script_path=$(realpath $(dirname $0))
 USERHOME="/home/"$(logname)
 
 pacman -Syyu                     # Sync and update repositories
@@ -89,12 +87,12 @@ select choice in "${AVAILABLE_DE[@]}" "${MENU_OPT[@]}";
 do
   case $choice in
     linuxscoop-antdark)
-      source $script_path/$choice/install.sh
+      sh $script_path/$choice/install.sh
       break
       ;;
     'All packages (!)')
       for de in $AVAILABLE_DE; do
-        source $script_path/$de/install.sh
+        sh $script_path/$de/install.sh
       done
       break
       ;;
