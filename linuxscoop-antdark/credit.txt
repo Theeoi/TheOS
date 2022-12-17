@@ -1,2 +1,0 @@
-This script is adapted from the Linuxscoop setup video found here:
-https://www.youtube.com/watch?v=KH-VC_wWI1M
