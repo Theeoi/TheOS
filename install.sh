@@ -56,6 +56,7 @@ sudo -u $(logname) ln -s $script_path/dotfiles/astronvim-init.lua $USERHOME/.con
 pacman -S npm
 pacman -S ripgrep
 pacman -S svn
+pacman -S direnv
 
 ### PROGRAMS ###
 
